@@ -1,5 +1,5 @@
-fastapi
-uvicorn
+flask
+flask-cors
 requests
-ollama
-gunicorn
+sentence-transformers
+numpy

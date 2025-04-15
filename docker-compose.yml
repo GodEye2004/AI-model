@@ -1,30 +1,10 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  app:
-    build:
-      context: . # Use the root directory as the context
-      dockerfile: Dockerfile
+  qa-app:
+    build: .
     ports:
-      - "8000:8000"
-    depends_on:
-      - ollama
-    networks:
-      - app_network
+      - "8080:8080"
     volumes:
-      - ./app:/app # Make sure 'app' exists in the root folder
+      - .:/app
     restart: always
-    environment:
-      - OLLAMA_URL=http://ollama:11434 # اضافه کردن URL برای ollama به‌عنوان متغیر محیطی
-
-  ollama:
-    image: ollama/ollama:latest
-    ports:
-      - "11434:11434"
-    networks:
-      - app_network
-    restart: always
-
-networks:
-  app_network:
-    driver: bridge
